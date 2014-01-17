@@ -5,3 +5,4 @@
 /Examples/DemoApp/bin/
 /Examples/DemoApp/gen/
 /Examples/DemoApp/target/
+**/build/
