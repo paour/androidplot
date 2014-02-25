@@ -256,8 +256,10 @@ public class XYPlotZoomPan extends XYPlot implements OnTouchListener {
     }
 
     private float getXDistance(final MotionEvent event) {
-        return event.getX(0) - event.getX(1);
-    }
+		float dx = event.getX(0) - event.getX(1);
+		float dy = event.getY(0) - event.getY(1);
+		return (float) Math.sqrt(dx * dx + dy * dy);
+	}
 
     private void pan(final MotionEvent motionEvent) {
         final PointF oldFirstFinger = firstFingerPos; //save old position of finger
