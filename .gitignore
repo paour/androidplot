@@ -7,3 +7,4 @@
 /Examples/DemoApp/target/
 **/build/
 .gradle
+*.iml
