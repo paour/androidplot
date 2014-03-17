@@ -16,7 +16,7 @@ allprojects {
 
 ext {
     theBuildToolsVersion = '19.0.0'
-    theSupportLibraryVersion = '19.0.0'
+    //theSupportLibraryVersion = '19.0.0'
     theCompileSdkVersion = 19
 }
 

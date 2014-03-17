@@ -6,9 +6,6 @@ dependencies {
 }
 
 android {
-    compileSdkVersion theCompileSdkVersion
-    buildToolsVersion "${theBuildToolsVersion}"
-	
 	sourceSets {
 		main {
 			manifest.srcFile 'AndroidManifest.xml'
