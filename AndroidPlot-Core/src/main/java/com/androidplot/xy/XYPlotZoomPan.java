@@ -383,4 +383,18 @@ public class XYPlotZoomPan extends XYPlot implements OnTouchListener {
             }
         }
     }
+
+	@Override
+	public void clear() {
+		super.clear();
+
+		minXLimit = Float.MAX_VALUE;
+		maxXLimit = Float.MAX_VALUE;
+		minYLimit = Float.MAX_VALUE;
+		maxYLimit = Float.MAX_VALUE;
+		lastMinX = Float.MAX_VALUE;
+		lastMaxX = Float.MAX_VALUE;
+		lastMinY = Float.MAX_VALUE;
+		lastMaxY = Float.MAX_VALUE;
+	}
 }

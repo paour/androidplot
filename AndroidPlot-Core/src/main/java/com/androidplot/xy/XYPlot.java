@@ -138,6 +138,25 @@ public class XYPlot extends Plot<XYSeries, XYSeriesFormatter, XYSeriesRenderer> 
     private static final int DEFAULT_PLOT_RIGHT_MARGIN_DP = 2;
     private static final int DEFAULT_PLOT_BOTTOM_MARGIN_DP = 2;
 
+	@Override
+	public void clear() {
+		super.clear();
+
+		userMaxX = userMinX = userMaxY = userMinY = null;
+		calculatedMaxX = calculatedMinX = calculatedMaxY = calculatedMinY = null;
+		prevMaxX = prevMinX = prevMaxY = prevMinY = null;
+		defaultBounds = null;
+
+		rangeTopMin = rangeTopMax = rangeBottomMin = rangeBottomMax = null;
+		domainLeftMin = domainLeftMax = domainRightMin = domainRightMax = null;
+
+		userDomainOrigin = userRangeOrigin = null;
+
+		calculatedDomainOrigin = calculatedRangeOrigin = null;
+
+		domainOriginExtent = rangeOriginExtent = null;
+	}
+
     public XYPlot(Context context, String title) {
         super(context, title);
     }
