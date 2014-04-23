@@ -387,7 +387,8 @@ public class XYPlot extends Plot<XYSeries, XYSeriesFormatter, XYSeriesRenderer> 
                     }
 
                     if (userMaxY == null) {
-                        if (thisY != null && (calculatedMaxY == null || thisY.doubleValue() > calculatedMaxY.doubleValue())) {
+                        if (thisY != null && (calculatedMaxY == null ||
+								thisY.doubleValue() > calculatedMaxY.doubleValue())) {
                             calculatedMaxY = thisY;
                         }
                     }

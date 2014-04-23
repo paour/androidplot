@@ -326,24 +326,28 @@ public abstract class Plot<SeriesType extends Series, FormatterType extends Form
                     keepRunning = true;
                     while (keepRunning) {
                         isIdle = false;
-                        synchronized (pingPong) {
-                            Canvas c = pingPong.getCanvas();
-                            renderOnCanvas(c);
-                            pingPong.swap();
-                        }
-                        synchronized (renderSynch) {
-                            postInvalidate();
-                            // prevent this thread from becoming an orphan
-                            // after the view is destroyed
-                            if (keepRunning) {
-                                try {
-                                    renderSynch.wait();
-                                } catch (InterruptedException e) {
-                                    keepRunning = false;
-                                }
-                            }
-                        }
-                    }
+						try {
+							synchronized (pingPong) {
+								Canvas c = pingPong.getCanvas();
+								renderOnCanvas(c);
+								pingPong.swap();
+							}
+							synchronized (renderSynch) {
+								postInvalidate();
+								// prevent this thread from becoming an orphan
+								// after the view is destroyed
+								if (keepRunning) {
+									try {
+										renderSynch.wait();
+									} catch (InterruptedException e) {
+										keepRunning = false;
+									}
+								}
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
                     System.out.println("AndroidPlot render thread finished.");
                 }
             });
