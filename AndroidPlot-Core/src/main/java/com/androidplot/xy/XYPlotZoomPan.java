@@ -3,6 +3,7 @@ package com.androidplot.xy;
 import android.content.Context;
 import android.graphics.PointF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -226,33 +227,38 @@ public class XYPlotZoomPan extends XYPlot implements OnTouchListener {
 
     @Override
     public boolean onTouch(final View view, final MotionEvent event) {
-        switch (event.getAction() & MotionEvent.ACTION_MASK)
-        {
-            case MotionEvent.ACTION_DOWN: // start gesture
-                firstFingerPos = new PointF(event.getX(), event.getY());
-                mode = State.ONE_FINGER_DRAG;
-                break;
-            case MotionEvent.ACTION_POINTER_DOWN: // second finger
-            {
-                mDistX = getXDistance(event);
-                // the distance check is done to avoid false alarms
-                if(mDistX > MIN_DIST_2_FING || mDistX < -MIN_DIST_2_FING) {
-                    mode = State.TWO_FINGERS_DRAG;
-                }
-                break;
-            }
-            case MotionEvent.ACTION_POINTER_UP: // end zoom
-                mode = State.NONE;
-                break;
-            case MotionEvent.ACTION_MOVE:
-                if(mode == State.ONE_FINGER_DRAG) {
-                    pan(event);
-                } else if(mode == State.TWO_FINGERS_DRAG) {
-                    zoom(event);
-                }
-                break;
-        }
-        return true;
+		try {
+			switch (event.getAction() & MotionEvent.ACTION_MASK)
+			{
+				case MotionEvent.ACTION_DOWN: // start gesture
+					firstFingerPos = new PointF(event.getX(), event.getY());
+					mode = State.ONE_FINGER_DRAG;
+					break;
+				case MotionEvent.ACTION_POINTER_DOWN: // second finger
+				{
+					mDistX = getXDistance(event);
+					// the distance check is done to avoid false alarms
+					if(mDistX > MIN_DIST_2_FING || mDistX < -MIN_DIST_2_FING) {
+						mode = State.TWO_FINGERS_DRAG;
+					}
+					break;
+				}
+				case MotionEvent.ACTION_POINTER_UP: // end zoom
+					mode = State.NONE;
+					break;
+				case MotionEvent.ACTION_MOVE:
+					if(mode == State.ONE_FINGER_DRAG) {
+						pan(event);
+					} else if(mode == State.TWO_FINGERS_DRAG) {
+						zoom(event);
+					}
+					break;
+			}
+		} catch (Exception e) {
+			Log.e("XYPlotZoomPan", "onTouch", e);
+		}
+
+		return true;
     }
 
     private float getXDistance(final MotionEvent event) {
