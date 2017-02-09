@@ -21,5 +21,4 @@ android {
 
 		instrumentTest.setRoot('src/test/java')
 	}
-	buildToolsVersion '23.0.2'
 }
