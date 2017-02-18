@@ -1,7 +1,12 @@
 apply plugin: 'com.android.library'
 
+repositories {
+	jcenter()
+}
+
 dependencies {
 //    compile "com.android.support:support-v4:${theSupportLibraryVersion}"
+	testCompile 'junit:junit:4.12'
 }
 
 android {
@@ -21,5 +26,4 @@ android {
 
 		instrumentTest.setRoot('src/test/java')
 	}
-	buildToolsVersion '23.0.2'
 }
