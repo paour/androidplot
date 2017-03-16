@@ -23,7 +23,5 @@ android {
 			res.srcDirs = ['res']
 			assets.srcDirs = ['assets']
 		}
-
-		instrumentTest.setRoot('src/test/java')
 	}
 }
