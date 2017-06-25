@@ -6,7 +6,7 @@ repositories {
 
 dependencies {
 //    compile "com.android.support:support-v4:${theSupportLibraryVersion}"
-	testCompile 'junit:junit:4.12'
+	testImplementation 'junit:junit:4.12'
 }
 
 android {
