@@ -24,4 +24,10 @@ android {
 			assets.srcDirs = ['assets']
 		}
 	}
+
+	buildTypes {
+		debug {}
+		release {}
+		preview {}
+	}
 }
