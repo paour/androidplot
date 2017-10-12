@@ -246,7 +246,7 @@ public class BarRenderer<T extends BarFormatter> extends XYSeriesRenderer<T> {
 	        	}
 				break;
 			case SIDE_BY_SIDE:
-				int width = (int) barGroup.width / barGroup.bars.size();
+				int width = barGroup.width / barGroup.bars.size();
 				int leftX = barGroup.leftX;
 				Collections.sort(barGroup.bars, new BarComparator());
 				for (Bar b : barGroup.bars) {
